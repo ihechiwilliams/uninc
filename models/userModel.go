@@ -10,7 +10,7 @@ import (
 type User struct {
 	ID            primitive.ObjectID `bson:"_id"`
 	Username      *string            `json:"username" validate:"required,min=2,max=100"`
-	Password      *string            `json:"Password" validate:"required,min=6""`
+	Password      *string            `json:"Password" validate:"required,min=6"`
 	Token         *string            `json:"token"`
 	Refresh_token *string            `json:"refresh_token"`
 	Created_at    time.Time          `json:"created_at"`

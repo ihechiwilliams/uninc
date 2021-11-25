@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 
+	controller "uninc/controllers"
 	middleware "uninc/middleware"
 	routes "uninc/routes"
 
@@ -23,17 +24,10 @@ func main() {
 
 	router.Use(middleware.Authentication())
 
-	// API-2
-	router.GET("/api-1", func(c *gin.Context) {
-
-		c.JSON(200, gin.H{"success": "Access granted for api-1"})
-
-	})
-
-	// API-1
-	router.GET("/api-2", func(c *gin.Context) {
-		c.JSON(200, gin.H{"success": "Access granted for api-2"})
-	})
+	// Create Endpoint
+	router.POST("/create/coupon", controller.CreateCoupon)
+	// List Endpoint
+	router.GET("/coupons", controller.ListCoupons)
 
 	router.Run(":" + port)
 }
